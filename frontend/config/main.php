@@ -31,6 +31,11 @@ return [
                 'password' => 'mYsmTpPassword',
             ],
         ],
+
+        'common' => [
+            'class' => 'frontend\components\Common',
+        ],
+
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
