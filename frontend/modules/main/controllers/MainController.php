@@ -11,4 +11,14 @@ class MainController extends \yii\web\Controller
         return $this->render('index');
     }
 
+    public function actionRegister()
+    {
+        $model = new SignupForm;
+
+        if($model->load(\Yii::$app->request->post()))
+        {
+            print_r($model->getAttibutes());
+            die;
+        }
+    }
 }
