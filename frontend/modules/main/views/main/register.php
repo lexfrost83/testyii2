@@ -3,8 +3,8 @@
 
         <?
         $form = \yii\bootstrap\ActiveForm::begin([
-            'enableClientValidation' => false,
-            'enableAjaxValidation' => true,
+            'enableClientValidation' => true,
+            'enableAjaxValidation' => false,
         ]);
         ?>
 

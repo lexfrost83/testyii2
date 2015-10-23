@@ -14,23 +14,41 @@ class DefaultController extends Controller
         return $this->render('index');
     }
 
-    public function actionService()
-    {
+    public function actionService(){
+
         $locator = \Yii::$app->locator;
         $cache = $locator->cache;
 
-        $cache->set("test", 1);
+        $cache->set("test",1);
 
         print $cache->get("test");
+
     }
 
-    public function actionEvent()
-    {
-        $component =\Yii::$app->common;// new Common();
-        $component->on(Common::EVENT_NOTIFY, [$component, 'notifyAdmin']);
-        $component->sendMail("test@domain.com", "Test", "Test text");
-        $component->off(Common::EVENT_NOTIFY, [$component, 'notifyAdmin']);
+    public function actionEvent(){
+
+        $component = \Yii::$app->common; //new Common();
+        $component->on(Common::EVENT_NOTIFY,[$component,'notifyAdmin']);
+        $component->sendMail("test@domain.com","Test","Test text");
+        $component->off(Common::EVENT_NOTIFY,[$component,'notifyAdmin']);
+
     }
 
+    public function actionPath(){
+        // @yii
+        // @app
+        //@runtime
+        //@webroot
+        //@web
+        //@vendor
+        //@bower
+        //@npm
+        // @frontend
+        // @backend
 
+        print \Yii::getAlias('@test');
+
+
+
+    }
 }
