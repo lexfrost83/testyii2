@@ -49,8 +49,13 @@ class MainController extends \yii\web\Controller
     public function actionContact()
     {
         $model = new ContactForm;
-        if($model->load(\Yii::$app->request->post()) && $model->validate()){
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
 
+
+            $body = " <div>Body: <b>" . $model->body . "</b></div> ";
+            $body.= " <div>Email: <b>" . $model->email . "</b></div> ";
+
+            \Yii::$app->common->sendMail($model->subject, $body);
             echo 'Send success';
             die;
         }
