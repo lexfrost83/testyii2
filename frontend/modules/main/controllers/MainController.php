@@ -31,16 +31,21 @@ class MainController extends \yii\web\Controller
 
     public function actionRegister()
     {
-        $model = new SignupForm;
-       // $model->scenario = 'short_register';
+        $model = new SignupForm();
+        // $model->scenario = 'short_register';
         if (\Yii::$app->request->isAjax && \Yii::$app->request->isPost) {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
-            return ActiveForm::validate($model);
+            if ($model->load(\Yii::$app->request->post())) {
+                \Yii::$app->response->format = Response::FORMAT_JSON;
+                return ActiveForm::validate($model);
+            }
         }
 
-        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
-            print_r($model->getAttributes());
-            die;
+
+        if ($model->load(\Yii::$app->request->post()) && $model->signup()) {
+
+            \Yii::$app->session->setFlash('success', 'Registration success');
+           // print_r($model->getAttributes());
+            //die;
         }
 
         return $this->render("register", ['model' => $model]);
@@ -54,7 +59,7 @@ class MainController extends \yii\web\Controller
 
 
             $body = " <div>Body: <b>" . $model->body . "</b></div> ";
-            $body.= " <div>Email: <b>" . $model->email . "</b></div> ";
+            $body .= " <div>Email: <b>" . $model->email . "</b></div> ";
 
             \Yii::$app->common->sendMail($model->subject, $body);
             echo 'Send success';

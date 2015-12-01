@@ -1,6 +1,7 @@
 <?
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
+
 \frontend\assets\MainAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -16,7 +17,15 @@ use yii\bootstrap\Nav;
 </head>
 
 <body>
-<?php $this->beginBody() ?>
+
+<? if (Yii::$app->session->hasFlash('success')): ?>
+
+<?= Yii::$app->session->getFlash('success') ?>
+
+<?
+endif;
+?>
+<? $this->beginBody() ?>
 
 <?= $this->render("//common/head") ?>
 

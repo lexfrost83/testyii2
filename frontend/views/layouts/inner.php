@@ -18,6 +18,27 @@ $this->beginPage();
 
 <body>
 
+
+<? if (Yii::$app->session->hasFlash('success')): ?>
+
+    <?
+
+    $success = Yii::$app->session->getFlash('success');
+
+    echo \yii\bootstrap\Alert::widget([
+        'options' => [
+            'class' => 'alert-info'
+        ],
+        'body' => $success
+    ])
+
+    ?>
+
+    <?
+endif;
+?>
+
+
 <?
 $this->beginBody();
 ?>
@@ -28,8 +49,9 @@ $this->beginBody();
 
 <div class="inside-banner">
     <div class="container">
-        <span class="pull-right"><a href="#">Home</a> / <?=$this->title ?></span>
-        <h2><?=$this->title ?></h2>
+        <span class="pull-right"><a href="#">Home</a> / <?= $this->title ?></span>
+
+        <h2><?= $this->title ?></h2>
     </div>
 </div>
 <!-- banner -->
@@ -37,10 +59,9 @@ $this->beginBody();
 <!-- banner -->
 <div class="container">
     <div class="spacer">
-        <?=$content ?>
+        <?= $content ?>
     </div>
 </div>
-
 
 
 <? echo $this->render("//common/footer") ?>
