@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
  */
 class AdvertController extends Controller
 {
+    public $layout = "inner";
     public function behaviors()
     {
         return [
