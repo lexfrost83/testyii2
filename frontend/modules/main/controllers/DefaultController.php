@@ -51,4 +51,9 @@ class DefaultController extends Controller
 
 
     }
+
+    public function actionLoginData()
+    {
+        print \Yii::$app->user->identity->username;
+    }
 }
