@@ -30,22 +30,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'location')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'location')->textInput(['maxlength' => 50]) ?>
 
-    <?= $form->field($model, 'hot')->textInput() ?>
+    <?= $form->field($model, 'hot')->radioList(['No', 'Yes']) ?>
 
-    <?= $form->field($model, 'sold')->textInput() ?>
+    <?= $form->field($model, 'sold')->radioList(['No', 'Yes']) ?>
 
-    <?= $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'type')->dropDownList(['Apartment', 'Building', 'office Space']) ?>
 
-    <?= $form->field($model, 'recommend')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'recommend')->radioList(['No', 'Yes']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton('Next', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
